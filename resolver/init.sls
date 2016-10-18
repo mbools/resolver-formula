@@ -2,7 +2,22 @@
 ##### Salt Formula For Resolver #####
 #####################################
 
-{% set is_resolvconf_enabled = grains['os'] == 'Ubuntu' and salt['pkg.version']('resolvconf') %}
+{% set is_resolvconf_enabled = grains['os'] == 'Ubuntu' and salt['pkg.version']('resolvconf') and  salt['pillar.get']('resolver:resolvconf', true) %}
+
+{% if not salt['pillar.get']('resolver:resolvconf', true) %}
+remove-resolvconf:
+  pkg.purged:
+    - name: resolvconf
+    - onchanges_in:
+      - file: remove-symlink
+
+remove-symlink:
+  file.absent:
+    - name: /etc/resolv.conf
+
+{% set is_resolvconf_enabled = false %}
+
+{% endif %}
 
 # Resolver Configuration
 resolv-file:
