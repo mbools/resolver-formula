@@ -33,7 +33,7 @@ How to use it:
 
 To remove resolvconf and ensure that salt has full control of resolv.conf file:
 
-.. code-block: yaml
+.. code-block:: yaml
 
   resolver:
     resolvconf: false
