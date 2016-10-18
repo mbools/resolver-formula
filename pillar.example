@@ -1,4 +1,5 @@
 resolver:
+  resolvconf: false
   searchpaths:
     - example.com
     - example.org

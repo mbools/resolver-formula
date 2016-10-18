@@ -30,3 +30,12 @@ How to use it:
     nameservers:
       - 8.8.8.8
       - 4.4.4.4
+
+To remove resolvconf and ensure that salt has full control of resolv.conf file:
+
+.. code-block: yaml
+
+  resolver:
+    resolvconf: false
+
+
