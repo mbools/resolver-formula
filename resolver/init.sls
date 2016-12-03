@@ -15,6 +15,13 @@ remove-symlink:
   file.absent:
     - name: /etc/resolv.conf
 
+/etc/dhcp/dhclient-enter-hooks.d/nodnsupdate
+  file.managed:
+    - user: root
+    - group: root
+    - mode: '0755'
+    - source: salt://resolver/files/nodnsupdate.conf
+
 {% set is_resolvconf_enabled = false %}
 
 {% endif %}
