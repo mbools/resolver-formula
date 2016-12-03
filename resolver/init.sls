@@ -15,7 +15,7 @@ remove-symlink:
   file.absent:
     - name: /etc/resolv.conf
 
-/etc/dhcp/dhclient-enter-hooks.d/nodnsupdate
+/etc/dhcp/dhclient-enter-hooks.d/nodnsupdate:
   file.managed:
     - user: root
     - group: root
